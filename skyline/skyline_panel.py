@@ -16,6 +16,7 @@ class SkylinePanel:
         self.display_frame = display_frame
         self.left_padding = left_padding
         self.right_padding = right_padding
+        self.loaded_fonts = {}
 
     def add_widget(self, widget):
         self.widgets.append(widget)
@@ -23,7 +24,9 @@ class SkylinePanel:
     def draw(self):
         self.widget_height = self.panel_height / len(self.widgets)
         for i, widget in enumerate(self.widgets):
-            widget.draw(self, i)
+            widget_surface = pygame.Surface(self.panel_width, self.widget_height)
+            widget.draw(self, widget_surface)
+            self.screen.blit(widget_surface, ()) # TODO: blit coords
         if self.display_frame:
             pygame.draw.rect(self.screen, self.accent_color, (self.panel_x, self.panel_y, self.panel_width, self.panel_height), width=1)
 

@@ -1,14 +1,14 @@
 import pygame
 from ..utils import load_pygame_font
+from ..core.layout import get_widget_rect
 
-def center_text_in_rect(screen, text_surface, rect):
+def center_text_in_rect(surface, text_surface, rect):
     text_rect = text_surface.get_rect(center=rect.center)
-    screen.blit(text_surface, text_rect)
+    surface.blit(text_surface, text_rect)
 
-def get_font_size(text, max_width, max_height, font_name):
+def load_fitting_font(text, max_width, max_height, font_name):
     font_size = 1
     font = load_pygame_font(font_name, font_size)
-    
     while True:
         w, h = font.size(text)
         if w > max_width or h > max_height:
