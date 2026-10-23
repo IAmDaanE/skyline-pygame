@@ -27,6 +27,9 @@ class SkylinePanel:
         if self.display_frame:
             pygame.draw.rect(self.screen, self.accent_color, (self.panel_x, self.panel_y, self.panel_width, self.panel_height), width=1)
 
-    def interact(self, pygame_keys, pygame_buttons):
+    def interact(self):
+        pygame_keys = pygame.key.get_pressed()
+        pygame_buttons = pygame.mouse.get_pressed()
+        pygame_mouse_pos = pygame.mouse.get_pos()
         for widget in self.widgets:
-            widget.interact(pygame_keys, pygame_buttons)
+            widget.interact(pygame_keys, pygame_buttons, pygame_mouse_pos)
