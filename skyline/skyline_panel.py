@@ -24,9 +24,9 @@ class SkylinePanel:
     def draw(self):
         self.widget_height = self.panel_height / len(self.widgets)
         for i, widget in enumerate(self.widgets):
-            widget_surface = pygame.Surface(self.panel_width, self.widget_height)
+            widget_surface = pygame.Surface((self.panel_width, self.widget_height))
             widget.draw(self, widget_surface)
-            self.screen.blit(widget_surface, ()) # TODO: blit coords
+            self.screen.blit(widget_surface, (self.panel_x, self.panel_y + i * self.widget_height))
         if self.display_frame:
             pygame.draw.rect(self.screen, self.accent_color, (self.panel_x, self.panel_y, self.panel_width, self.panel_height), width=1)
 
