@@ -1,6 +1,5 @@
 import pygame
 from ..utils import load_pygame_font
-from ..core.layout import get_widget_rect
 
 def center_text_in_rect(surface, text_surface, rect):
     text_rect = text_surface.get_rect(center=rect.center)
