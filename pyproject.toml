@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+"my_ui_library.assets" = ["*.ttf", "*.otf"]
+
+[project]
+name = "skyline"
+version = "0.1.0"
+dependencies = ["pygame-ce"]
