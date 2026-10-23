@@ -9,7 +9,7 @@ class SkyLabel:
         self.centered = centered
 
     def draw(self, panel_class, index):
-        pass
+        y = 
 
     def interact(self, pygame_keys, pygame_buttons):
         pass # permanent, a label is static
