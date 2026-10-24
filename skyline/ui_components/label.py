@@ -11,7 +11,7 @@ class SkyLabel:
         self.vertical_gap = vertical_gap
         self.font = None
 
-    def draw(self, panel_class, widget_surface):
+    def draw(self, panel_class, widget_surface, index):
         if self.background_color == None:
             self.background_color = panel_class.background_color
         if self.text_color == None:

@@ -7,5 +7,5 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "skyline"
-version = "0.2.4"
+version = "1.0.0"
 dependencies = ["pygame-ce"]

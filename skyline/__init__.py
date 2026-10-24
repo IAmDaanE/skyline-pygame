@@ -2,8 +2,8 @@
 #from .ui_components.checkbox import SkyCheckBox
 #from .ui_components.input_field import SkyInputField
 from .ui_components.label import SkyLabel
-#from .ui_components.slider import SkySlider
+from .ui_components.slider import SkySlider
 #from .ui_components.spinbox import SkySpinBox
 from .skyline_panel import SkylinePanel
 
-__all__ = ["SkyLabel", "SkylinePanel"]
+__all__ = ["SkyLabel", "SkylinePanel", "SkySlider"]
