@@ -1,6 +1,6 @@
 import pygame
 from ..core.typography import center_text_in_rect, load_fitting_font
-from ..utils import load_pygame_font
+from ..core.file_loading import load_set_font
 
 class SkyLabel:
     def __init__(self, text_string, font_name="JetBrainsMono-Regular", background_color=None, text_color=None, vertical_gap=5):
