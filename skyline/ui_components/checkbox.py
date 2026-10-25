@@ -1,9 +1,10 @@
 import pygame 
-from ..core.typography import load_fitting_font, align_text_right_in_rect
+from ..core.typography import load_fitting_font, align_text_right_in_rect, truncate_pygame_text, align_text_left_in_rect
 from ..core.image_processing import load_and_replace_image_colors
+from ..core.file_loading import load_set_font
 
 class SkyCheckbox:
-    def __init__(self, text_string, background_color=None, checkbox_color=None, checkmark_color=None, text_color=None, font_name="JetBrainsMono-Regular", enabled=False, vertical_text_gap=5, box_text_spacing=8, checkbox_size=16):
+    def __init__(self, text_string, background_color=None, checkbox_color=None, checkmark_color=None, text_color=None, font_name=None, enabled=False, vertical_text_gap=5, box_text_spacing=8, checkbox_size=16, font_size=None, dynamic_font_size=False):
         self.text_string = text_string
         self.background_color = background_color
         self.checkbox_color = checkbox_color
@@ -21,6 +22,8 @@ class SkyCheckbox:
         self.checkbox_size = checkbox_size
         self.checkmark_image = None
         self.clicked_prev_frame = False
+        self.font_size = font_size
+        self.dynamic_font_size = dynamic_font_size
 
     def interact(self, pygame_keys, pygame_buttons, pygame_mouse_pos):
         if pygame_buttons[0]:
@@ -40,6 +43,9 @@ class SkyCheckbox:
             self.checkmark_color = panel_class.main_color
         if self.text_color == None:
             self.text_color = panel_class.main_color
+        widget_surface.fill(self.background_color)
+        if self.font_name == None:
+                self.font_name = panel_class.font_name
         widget_height = int(widget_surface.get_height())
         widget_width = int(widget_surface.get_width())
         if self.checkbox_rect == None:
@@ -47,11 +53,18 @@ class SkyCheckbox:
         self.global_checkbox_rect = pygame.Rect(self.checkbox_rect.x + panel_class.panel_x, widget_height * index + self.checkbox_rect.y + panel_class.panel_y, self.checkbox_size, self.checkbox_size)
         if self.big_text_rect == None:
             self.big_text_rect = pygame.Rect(self.checkbox_rect.right + self.box_text_spacing, self.vertical_text_gap, widget_width - panel_class.left_padding - panel_class.right_padding - self.box_text_spacing - self.checkbox_rect.width, widget_height - 2 * self.vertical_text_gap)
+        if self.font_size == None:
+            if self.dynamic_font_size:
+                self.font = self.font = load_fitting_font(self.text_string, self.big_text_rect.width, self.big_text_rect.height, self.font_name)
+            else:
+                self.font_size = panel_class.font_size
         if self.font == None:
-            self.font = load_fitting_font(self.text_string, self.big_text_rect.width, self.big_text_rect.height, self.font_name)
+            self.font = load_set_font(self.font_name, self.font_size)
         if self.text == None:
+            if not self.dynamic_font_size:
+                self.text_string = truncate_pygame_text(self.text_string, self.font_size, self.big_text_rect.width, self.font_name)
             self.text = self.font.render(self.text_string, True, self.text_color)
-        align_text_right_in_rect(widget_surface, self.text, self.big_text_rect)
+        align_text_left_in_rect(widget_surface, self.text, self.big_text_rect)
         pygame.draw.rect(widget_surface, self.checkbox_color, self.checkbox_rect, border_radius=3)
         if self.checkmark_image == None:
             self.checkmark_image = load_and_replace_image_colors("checkmark", (0, 0, 0), self.checkmark_color)

@@ -2,7 +2,7 @@
 import pygame
 
 class SkylinePanel:
-    def __init__(self, screen, panel_x, panel_y, panel_width, panel_height, display_frame=True, left_padding=20, right_padding=20, main_color=(0, 22, 138), background_color=(0, 0, 0), accent_color=(44, 175, 219)):
+    def __init__(self, screen, panel_x, panel_y, panel_width, panel_height, display_frame=True, left_padding=20, right_padding=20, main_color=(0, 22, 138), background_color=(0, 0, 0), accent_color=(44, 175, 219), font_size=25, font_name="JetBrainsMono-Regular"):
         self.screen = screen
         self.panel_x = panel_x
         self.panel_y = panel_y
@@ -16,7 +16,8 @@ class SkylinePanel:
         self.display_frame = display_frame
         self.left_padding = left_padding
         self.right_padding = right_padding
-        self.loaded_fonts = {}
+        self.font_size = font_size
+        self.font_name = font_name
 
     def add_widget(self, widget):
         self.widgets.append(widget)
