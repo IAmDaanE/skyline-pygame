@@ -95,7 +95,7 @@ class SkySlider:
         widget_surface.fill(self.background_color)
         self.global_grip_rect = pygame.Rect(self.local_grip_rect.x + panel_class.panel_x, self.local_grip_rect.y + panel_class.panel_y + panel_class.widget_height * index, self.local_grip_rect.width, self.local_grip_rect.height)
         if self.display_text:
-            self.text = self.font.render(str(round_to_num_digits(self.value, self.rounded_digits)), True, self.text_color)
+            self.text = self.font.render(f"{round_to_num_digits(self.value, self.rounded_digits):.{self.rounded_digits - 1}f}", True, self.text_color)
             align_text_right_in_rect(widget_surface, self.text, self.big_text_rect)
         pygame.draw.rect(widget_surface, panel_class.main_color, self.sliding_path_rect)
         pygame.draw.rect(widget_surface, panel_class.accent_color, self.local_grip_rect)
