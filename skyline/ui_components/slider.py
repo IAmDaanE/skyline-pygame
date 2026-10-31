@@ -4,7 +4,7 @@ from ..utils import round_to_num_digits
 from ..core.file_loading import load_set_font
 
 class SkySlider:
-    def __init__(self, min_value, max_value, background_color=None, slide_path_color=None, slide_grip_color=None, text_color=None, display_text=False, font_name=None, rounded_digits=3, slider_partition=0.85, font_size=None, grip_width=8, grip_height=20, sliding_path_height=5):
+    def __init__(self, min_value, max_value, background_color=None, slide_path_color=None, slide_grip_color=None, text_color=None, display_text=False, font_name=None, rounded_digits=3, slider_partition=0.85, font_size=None, grip_width=8, grip_height=20, sliding_path_height=5, left_padding=None, right_padding=None):
         if max_value < min_value or max_value == min_value:
             raise ValueError("Max value should be higher then min value.")
         self.min_value = min_value
@@ -32,6 +32,8 @@ class SkySlider:
         self.grip_height = grip_height
         self.font = None
         self.sliding_path_height = sliding_path_height
+        self.left_padding = left_padding
+        self.right_padding = right_padding
 
     def setup(self, panel_class, index):
         if self.background_color == None:
@@ -44,6 +46,10 @@ class SkySlider:
             self.text_color = panel_class.accent_color
         if self.font_name == None:
             self.font_name = panel_class.font_name
+        if self.left_padding == None:
+            self.left_padding = panel_class.left_padding
+        if self.right_padding == None:
+            self.right_padding = panel_class.right_padding
         sliding_path_text_gap = 20
         widget_height = panel_class.widget_height
         widget_width = panel_class.panel_width

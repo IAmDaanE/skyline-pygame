@@ -38,10 +38,14 @@ class SkyCheckbox:
             self.text_color = panel_class.main_color
         if self.font_name == None:
             self.font_name = panel_class.font_name
+        if self.left_padding == None:
+            self.left_padding = panel_class.left_padding
+        if self.right_padding == None:
+            self.right_padding = panel_class.right_padding
         if self.checkbox_rect == None:
-                self.checkbox_rect = pygame.Rect(panel_class.left_padding, panel_class.widget_height / 2 - self.checkbox_size / 2, self.checkbox_size, self.checkbox_size)
+                self.checkbox_rect = pygame.Rect(self.left_padding, panel_class.widget_height / 2 - self.checkbox_size / 2, self.checkbox_size, self.checkbox_size)
         if self.big_text_rect == None:
-                self.big_text_rect = pygame.Rect(self.checkbox_rect.right + self.box_text_spacing, self.vertical_text_gap, panel_class.panel_width - panel_class.left_padding - panel_class.right_padding - self.box_text_spacing - self.checkbox_rect.width, panel_class.widget_height - 2 * self.vertical_text_gap)
+                self.big_text_rect = pygame.Rect(self.checkbox_rect.right + self.box_text_spacing, self.vertical_text_gap, panel_class.panel_width - self.left_padding - self.right_padding - self.box_text_spacing - self.checkbox_rect.width, panel_class.widget_height - 2 * self.vertical_text_gap)
         if self.font_size == None:
             if self.dynamic_font_size:
                 self.font = self.font = load_fitting_font(self.text_string, self.big_text_rect.width, self.big_text_rect.height, self.font_name)

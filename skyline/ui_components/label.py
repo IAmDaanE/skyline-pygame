@@ -3,7 +3,7 @@ from ..core.typography import center_text_in_rect, load_fitting_font, align_text
 from ..core.file_loading import load_set_font
 
 class SkyLabel:
-    def __init__(self, text_string, font_name=None, background_color=None, text_color=None, vertical_gap=5, font_size=None, dynamic_font_size=False):
+    def __init__(self, text_string, font_name=None, background_color=None, text_color=None, vertical_gap=5, font_size=None, dynamic_font_size=False, left_padding=None, right_padding=None):
         self.text_string = text_string
         self.font_name = font_name
         self.background_color = background_color
@@ -14,15 +14,21 @@ class SkyLabel:
         self.dynamic_font_size = dynamic_font_size
         self.text = None
         self.big_text_rect = None
+        self.left_padding = left_padding
+        self.right_padding = right_padding
 
     def setup(self, panel_class, index):
         if self.background_color == None:
             self.background_color = panel_class.background_color
         if self.text_color == None:
             self.text_color = panel_class.accent_color
+        if self.left_padding == None:
+            self.left_padding = panel_class.left_padding
+        if self.right_padding == None:
+            self.right_padding = panel_class.right_padding
         if self.big_text_rect == None:
             full_rect = pygame.Rect(panel_class.panel_x, panel_class.panel_y, panel_class.panel_width, panel_class.widget_height)
-            self.big_text_rect = pygame.Rect(panel_class.left_padding, self.vertical_gap, full_rect.width - panel_class.left_padding - panel_class.right_padding, full_rect.height - 2 * self.vertical_gap)
+            self.big_text_rect = pygame.Rect(self.left_padding, self.vertical_gap, full_rect.width - self.left_padding - self.right_padding, full_rect.height - 2 * self.vertical_gap)
         if self.font_name == None:
             self.font_name = panel_class.font_name
         if self.font_size == None:
