@@ -28,7 +28,7 @@ def load_fitting_font(text, max_width, max_height, font_name):
 
 def truncate_pygame_text(text, font_size, max_width, font_name):
     if len(text) < 2:
-        raise ValueError("The text string is too short.")
+        return text
     truncated_text = None
     font = load_set_font(font_name, font_size)
     text_surface = font.render(text, True, (0,0,0))

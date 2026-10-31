@@ -15,13 +15,13 @@ class SkyLabel:
         self.text = None
         self.big_text_rect = None
 
-    def draw(self, panel_class, widget_surface, index):
+    def setup(self, panel_class, index):
         if self.background_color == None:
             self.background_color = panel_class.background_color
         if self.text_color == None:
             self.text_color = panel_class.accent_color
         if self.big_text_rect == None:
-            full_rect = widget_surface.get_rect()
+            full_rect = pygame.Rect(panel_class.panel_x, panel_class.panel_y, panel_class.panel_width, panel_class.widget_height)
             self.big_text_rect = pygame.Rect(panel_class.left_padding, self.vertical_gap, full_rect.width - panel_class.left_padding - panel_class.right_padding, full_rect.height - 2 * self.vertical_gap)
         if self.font_name == None:
             self.font_name = panel_class.font_name
@@ -36,7 +36,8 @@ class SkyLabel:
             if not self.dynamic_font_size:
                 self.text_string = truncate_pygame_text(self.text_string, self.font_size, self.big_text_rect.width, self.font_name)
             self.text = self.font.render(self.text_string, True, self.text_color)
-        self.text = self.font.render(self.text_string, True, self.text_color)
+
+    def draw(self, panel_class, widget_surface, index):
         widget_surface.fill(self.background_color)
         center_text_in_rect(widget_surface, self.text, self.big_text_rect)
 

@@ -2,7 +2,7 @@
 import pygame
 
 class SkylinePanel:
-    def __init__(self, screen, panel_x, panel_y, panel_width, panel_height, display_frame=True, left_padding=20, right_padding=20, main_color=(0, 22, 138), background_color=(0, 0, 0), accent_color=(44, 175, 219), font_size=25, font_name="JetBrainsMono-Regular"):
+    def __init__(self, screen, panel_x, panel_y, panel_width, panel_height, display_frame=True, display_separations=False, left_padding=20, right_padding=20, main_color=(0, 22, 138), background_color=(0, 0, 0), accent_color=(44, 175, 219), font_size=18, font_name="JetBrainsMono-Regular"):
         self.screen = screen
         self.panel_x = panel_x
         self.panel_y = panel_y
@@ -18,15 +18,24 @@ class SkylinePanel:
         self.right_padding = right_padding
         self.font_size = font_size
         self.font_name = font_name
+        self.setup_done = False
+        self.display_separations = display_separations
 
     def add_widget(self, widget):
         self.widgets.append(widget)
+        index = len(self.widgets) - 1
 
     def draw(self):
         self.widget_height = self.panel_height / len(self.widgets)
+        if not self.setup_done:
+            for i, widget in enumerate(self.widgets):
+                widget.setup(self, i)
+            self.setup_done = True
         for i, widget in enumerate(self.widgets):
             widget_surface = pygame.Surface((self.panel_width, self.widget_height))
             widget.draw(self, widget_surface, i)
+            if self.display_separations:
+                pygame.draw.rect(widget_surface, self.accent_color, (0, self.widget_height - 1, self.panel_width, 1))
             self.screen.blit(widget_surface, (self.panel_x, self.panel_y + i * self.widget_height))
         if self.display_frame:
             pygame.draw.rect(self.screen, self.accent_color, (self.panel_x, self.panel_y, self.panel_width, self.panel_height), width=1)
