@@ -69,7 +69,7 @@ class SkySlider:
         if self.display_text:
             if self.font == None:
                 if self.font_size == None:
-                    self.font = load_fitting_font(str(round_to_num_digits(self.value, self.rounded_digits)), self.big_text_rect.width, self.big_text_rect.height, self.font_name)
+                    self.font = load_fitting_font(f"{round_to_num_digits(self.value, self.rounded_digits):.{self.rounded_digits - 1}f}", self.big_text_rect.width, self.big_text_rect.height, self.font_name)
                 else:
                     self.font = load_set_font(self.font_name, self.font_size)         
 
