@@ -15,7 +15,11 @@
 
 ## About the Project
 
-This library's design philosophy is to be simple to use and very customizable at the same time. It is meant to be used at the side alongside something like a simulation or visualization. It's a system of UI panels, the starting point is SkylinePanel(), you can have multiple of them in one window and then you add widgets to them with panel.add_widget(). The widgets like SkyCheckbox, SkySlider, SkyLabel will then stack vertically inside that panel. The biggest weakness of this system is that you can't have widgets horizontally alongside eachother.
+This library's design philosophy is to be simple to use and very customizable at the same time. It is meant to be used at the side alongside something like a simulation or visualization. 
+
+It's a system of UI panels, the starting point is SkylinePanel(), you can have multiple of them in one window and then you add widgets to them with panel.add_widget(). The widgets like SkyCheckbox, SkySlider, SkyLabel will then stack vertically inside that panel. 
+
+The biggest weakness of this system is that you can't have widgets horizontally alongside eachother.
 
 ## Project Structure
 
