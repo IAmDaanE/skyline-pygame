@@ -9,8 +9,10 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/ui_showcase_screenshot.png" alt="Showcase" height="170">
+  <img src="docs/images/ui_showcase_screenshot.png" alt="ui showcase" height="170">
+  <a href="https://github.com/IAmDaanE/ai-reverse-mnist"><img src="docs/images/reverse_mnist_screenshot.png" alt="ai reverse mnist" height="170">
 </p>
+
 ## About the Project
 
 This library's design philosophy is to be simple to use and very customizable at the same time. It is meant to be used at the side alongside something like a simulation or visualization. It's a system of UI panels, the starting point is SkylinePanel(), you can have multiple of them in one window and then you add widgets to them with panel.add_widget(). The widgets like SkyCheckbox, SkySlider, SkyLabel will then stack vertically inside that panel. The biggest weakness of this system is that you can't have widgets horizontally alongside eachother.
