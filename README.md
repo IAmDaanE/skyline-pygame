@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/IAmDaanE/skyline-pygame/docs/images/skyline_logo.png" alt="Logo" height="170">
+  <img src="docs/images/skyline_logo.png" alt="Logo" height="170">
 </p>
 
 <h1 align="center">Skyline</h1>
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/IAmDaanE/skyline-pygame/docs/images/ui_showcase_screenshot.png" alt="Showcase" height="170">
+  <img src="docs/images/ui_showcase_screenshot.png" alt="Showcase" height="170">
 </p>
 ## About the Project
 
