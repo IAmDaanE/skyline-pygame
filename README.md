@@ -1,16 +1,16 @@
 <p align="center">
-  <img src="https://github.com/IAmDaanE/skyline-pygame/docs/images/skyline_logo.png" alt="Logo" height=170>
+  <img src="https://github.com/IAmDaanE/skyline-pygame/docs/images/skyline_logo.png" alt="Logo" height="170">
 </p>
+
 <h1 align="center">Skyline</h1>
-<p align="center">
-<strong>A simple pygame GUI library to create user interfaces as or alongside a project.</p>
-
-</div>
 
 <p align="center">
-  <img src="https://github.com/IAmDaanE/skyline-pygame/docs/images/ui_showcase_screenshot.png" alt="Logo" height=170>
+  <strong>A simple pygame GUI library to create user interfaces as or alongside a project.</strong>
 </p>
 
+<p align="center">
+  <img src="https://github.com/IAmDaanE/skyline-pygame/docs/images/ui_showcase_screenshot.png" alt="Showcase" height="170">
+</p>
 ## About the Project
 
 This library's design philosophy is to be simple to use and very customizable at the same time. It is meant to be used at the side alongside something like a simulation or visualization. It's a system of UI panels, the starting point is SkylinePanel(), you can have multiple of them in one window and then you add widgets to them with panel.add_widget(). The widgets like SkyCheckbox, SkySlider, SkyLabel will then stack vertically inside that panel. The biggest weakness of this system is that you can't have widgets horizontally alongside eachother.
