@@ -10,7 +10,7 @@
 
 <p align="center">
   <img src="docs/images/ui_showcase_screenshot.png" alt="ui showcase" height="170">
-  <a href="https://github.com/IAmDaanE/ai-reverse-mnist"><img src="docs/images/reverse_mnist_screenshot.png" alt="ai reverse mnist" height="170">
+  <a href="https://github.com/IAmDaanE/reverse-mnist"><img src="docs/images/reverse_mnist_screenshot.png" alt="reverse mnist" height="170">
 </p>
 
 ## About the Project
